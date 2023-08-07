@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+    <title>{% block title %}Create Page{% endblock %}</title>
+
+<body>
+{% block body %}
+    {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+   {% if message.tags %}
+       <div class="alart alart-danger" role="alert">{% endif %}{{ message }}</div>
+    {% endfor %}
+</ul>
+{% endif %}
+    <div class="container">
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="mb-3">
+    <label class="form-label">Name</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" name="name" aria-describedby="emailHelp" placeholder="enter your name">
+  </div>
+    <div class="mb-3">
+    <label class="form-label">Picture</label>
+    <input type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="image" >
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
+    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+  </div>
+
+    <div class="mb-3">
+    <label class="form-label">Phone Number</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" name="phone_number" aria-describedby="emailHelp" placeholder="enter your mobile number">
+  </div>
+
+
+
+    <div class="mb-3">
+    <label class="form-label">note</label>
+    <input type="text" class="form-control" id="exampleInputAddress" name="note" aria-describedby="emailHelp" placeholder="what you want to write">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+    </div>
+{% endblock %}
+</body>

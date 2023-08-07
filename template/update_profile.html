@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+<title>{% block title %}Update Profile{% endblock %}</title>
+<body>
+{% block body %}
+    <div class="container">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label class="form-label">Name</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" name="name" aria-describedby="emailHelp"
+                       value="{{ prof.name }}" placeholder="enter your name">
+            </div>
+            <div class="mb-3">
+                <img src=" {{ prof.image.url }} " style="width: 200px;height: 200px">
+                <label class="form-label">Picture</label>
+                <input type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                       name="image" value="{{ prof.image.url }}">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                       name="email" value="{{ prof.email }}">
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Phone Number</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" name="phone_number"
+                       aria-describedby="emailHelp" placeholder="enter your mobile number"
+                       value="{{ prof.phone_number }}">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">noted</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" name="note"
+                       aria-describedby="emailHelp" placeholder="enter your mobile number"
+                       value="{{ prof.note }}">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+{% endblock %}
+</body>

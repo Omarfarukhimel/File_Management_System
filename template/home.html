@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+<title>{% block title %}Home Page{% endblock %}</title>
+
+{% block body %}
+
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    {% if message.tags %}
+                        <div class="alert alert-danger" role="alert">{% endif %}{{ message }}</div>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <div class="row">
+            {% for i in user_prof %}
+                <div class="card mb-5" style="max-width: 480px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="{{ i.image.url }}" class="img-fluid rounded-start" alt="...">
+
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ i.name }}</h5>
+                                <h5 class="card-text">{{ i.email }}</h5>
+                                <hr>
+                                <a href="{% url 'see_profile' i.id %}" class="btn  btn-primary ">See Profile</a>
+                                <a href="{% url 'delete' i.id %}" class="btn  btn-danger ">Delete</a>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
